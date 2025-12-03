@@ -1,5 +1,0 @@
-image_path, crop, disease, healthy, diseased
-datasets/plantvillage/BellPepper_Healthy/img1.jpg, bellpepper, healthy, 1, 0
-datasets/plantvillage/BellPepper_Bacterial_Spot/img5.jpg, bellpepper, bacterial_spot, 0, 1
-datasets/plantvillage/Tomato_Early_Blight/img10.jpg, tomato, early_blight, 0, 1
-...
