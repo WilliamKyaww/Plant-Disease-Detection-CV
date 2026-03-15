@@ -1,0 +1,249 @@
+{
+  "coverage": {
+    "models": [
+      "efficientnet_b0",
+      "resnet18",
+      "resnet50",
+      "vit_small_patch16_224"
+    ],
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "run_count": 12
+  },
+  "leaderboard": [
+    {
+      "model": "resnet18",
+      "accuracy_mean": 0.9981696813092161,
+      "accuracy_std": 0.0006723727388456172,
+      "f1_macro_mean": 0.9984458529964705,
+      "f1_macro_std": 0.000605125987265299,
+      "elapsed_mean_sec": 1800.1349988226666,
+      "elapsed_std_sec": 28.30916200095269,
+      "params": 11184207,
+      "model_size_bytes": 44809163,
+      "runs": 3,
+      "epochs_mean": 29.333333333333332,
+      "model_size_mb": 42.73334789276123,
+      "params_millions": 11.184207
+    },
+    {
+      "model": "efficientnet_b0",
+      "accuracy_mean": 0.9979543496985358,
+      "accuracy_std": 0.0007459305803483844,
+      "f1_macro_mean": 0.9982428953761745,
+      "f1_macro_std": 0.0005461757180385756,
+      "elapsed_mean_sec": 2051.687356922667,
+      "elapsed_std_sec": 136.0354364889489,
+      "params": 4026763,
+      "model_size_bytes": 16382373,
+      "runs": 3,
+      "epochs_mean": 26.666666666666668,
+      "model_size_mb": 15.623448371887207,
+      "params_millions": 4.026763
+    },
+    {
+      "model": "vit_small_patch16_224",
+      "accuracy_mean": 0.9973083548664944,
+      "accuracy_std": 0.0007459305803483123,
+      "f1_macro_mean": 0.9975684222321884,
+      "f1_macro_std": 0.0008129795175396478,
+      "elapsed_mean_sec": 1713.377776545333,
+      "elapsed_std_sec": 450.2118569843108,
+      "params": 21671439,
+      "model_size_bytes": 86734581,
+      "runs": 3,
+      "epochs_mean": 23.333333333333332,
+      "model_size_mb": 82.71654224395752,
+      "params_millions": 21.671439
+    },
+    {
+      "model": "resnet50",
+      "accuracy_mean": 0.9962316968130921,
+      "accuracy_std": 0.001038291425602193,
+      "f1_macro_mean": 0.996138770632372,
+      "f1_macro_std": 0.001559050092687154,
+      "elapsed_mean_sec": 1666.7236127906665,
+      "elapsed_std_sec": 60.18479454430729,
+      "params": 23538767,
+      "model_size_bytes": 94455021,
+      "runs": 3,
+      "epochs_mean": 20.333333333333332,
+      "model_size_mb": 90.07932758331299,
+      "params_millions": 23.538767
+    }
+  ],
+  "top_confusion_pairs": [
+    {
+      "true_class": "Tomato - Target Spot",
+      "predicted_class": "Tomato - Spider Mites",
+      "count": 13
+    },
+    {
+      "true_class": "Tomato - Late Blight",
+      "predicted_class": "Tomato - Early Blight",
+      "count": 10
+    },
+    {
+      "true_class": "Tomato - Yellow Leaf Curl Virus",
+      "predicted_class": "Tomato - Bacterial Spot",
+      "count": 9
+    },
+    {
+      "true_class": "Tomato - Early Blight",
+      "predicted_class": "Tomato - Late Blight",
+      "count": 9
+    },
+    {
+      "true_class": "Tomato - Spider Mites",
+      "predicted_class": "Tomato - Target Spot",
+      "count": 8
+    },
+    {
+      "true_class": "Tomato - Bacterial Spot",
+      "predicted_class": "Tomato - Early Blight",
+      "count": 8
+    },
+    {
+      "true_class": "Tomato - Target Spot",
+      "predicted_class": "Tomato - Early Blight",
+      "count": 7
+    },
+    {
+      "true_class": "Tomato - Yellow Leaf Curl Virus",
+      "predicted_class": "Tomato - Late Blight",
+      "count": 6
+    },
+    {
+      "true_class": "Tomato - Yellow Leaf Curl Virus",
+      "predicted_class": "Tomato - Spider Mites",
+      "count": 5
+    },
+    {
+      "true_class": "Tomato - Spider Mites",
+      "predicted_class": "Tomato - Late Blight",
+      "count": 3
+    }
+  ],
+  "hardest_classes_by_model": {
+    "resnet18": [
+      {
+        "class_name": "Tomato - Late Blight",
+        "seed": 41,
+        "f1_score": 0.9912739965095986
+      },
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 41,
+        "f1_score": 0.9933774834437086
+      },
+      {
+        "class_name": "Tomato - Spider Mites",
+        "seed": 41,
+        "f1_score": 0.9940119760479041
+      },
+      {
+        "class_name": "Tomato - Late Blight",
+        "seed": 43,
+        "f1_score": 0.9947826086956522
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 41,
+        "f1_score": 0.995260663507109
+      }
+    ],
+    "resnet50": [
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 43,
+        "f1_score": 0.9770491803278688
+      },
+      {
+        "class_name": "Potato - Healthy",
+        "seed": 42,
+        "f1_score": 0.9787234042553191
+      },
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 42,
+        "f1_score": 0.9834983498349835
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 42,
+        "f1_score": 0.9882352941176471
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 41,
+        "f1_score": 0.9904761904761905
+      }
+    ],
+    "efficientnet_b0": [
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 42,
+        "f1_score": 0.9900332225913622
+      },
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 43,
+        "f1_score": 0.9900990099009901
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 42,
+        "f1_score": 0.9928741092636579
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 43,
+        "f1_score": 0.9928741092636579
+      },
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 41,
+        "f1_score": 0.9933774834437086
+      }
+    ],
+    "vit_small_patch16_224": [
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 41,
+        "f1_score": 0.9834983498349835
+      },
+      {
+        "class_name": "Tomato - Late Blight",
+        "seed": 41,
+        "f1_score": 0.9895833333333334
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 41,
+        "f1_score": 0.9928400954653938
+      },
+      {
+        "class_name": "Tomato - Target Spot",
+        "seed": 43,
+        "f1_score": 0.9928400954653938
+      },
+      {
+        "class_name": "Tomato - Early Blight",
+        "seed": 42,
+        "f1_score": 0.9933333333333333
+      }
+    ]
+  },
+  "plots": {
+    "metric_summary": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\metric_summary.png",
+    "seed_variance": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\seed_variance.png",
+    "efficiency_tradeoff": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\efficiency_tradeoff.png",
+    "loss_curves": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\loss_curves.png",
+    "accuracy_curves": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\accuracy_curves.png",
+    "mean_confusion_heatmaps": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\mean_confusion_heatmaps.png",
+    "top_confusions": "C:\\Users\\willi\\Documents\\GitHub\\Plant Disease Detection CV\\results\\phase2\\analysis\\plots\\top_confusions.png"
+  }
+}

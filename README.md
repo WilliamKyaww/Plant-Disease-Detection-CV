@@ -156,3 +156,30 @@ Use `src/experiment_log.py` to record:
 4. Git commit hash
 5. Split artifact metadata (CSV hashes + class counts + seed)
 6. GPU metadata on CUDA devices (with compatibility handling for PyTorch device property naming).
+
+## Phase 2 Analysis
+Use script-based analysis as the canonical reporting path.
+
+Generate comparison plots and aggregate summaries from existing benchmark artifacts:
+```bash
+py -3.13 -m src.phase2_analysis
+```
+
+Outputs:
+1. `results/phase2/analysis/analysis_summary.json`
+2. `results/phase2/analysis/plots/metric_summary.png`
+3. `results/phase2/analysis/plots/seed_variance.png`
+4. `results/phase2/analysis/plots/efficiency_tradeoff.png`
+5. `results/phase2/analysis/plots/loss_curves.png`
+6. `results/phase2/analysis/plots/accuracy_curves.png`
+7. `results/phase2/analysis/plots/mean_confusion_heatmaps.png`
+8. `results/phase2/analysis/plots/top_confusions.png`
+
+Checkpoint-based wrong-image extraction is handled separately:
+```bash
+py -3.13 -m src.phase2_error_analysis --models all
+```
+
+Important note:
+1. `src.phase2_error_analysis` validates local checkpoint hashes against the run logs.
+2. If local `models/phase2/.../best.pth` files do not match the imported benchmark artifacts, the script will stop rather than generate misleading mistake galleries.
