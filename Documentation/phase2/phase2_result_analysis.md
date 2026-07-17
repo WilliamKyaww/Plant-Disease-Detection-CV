@@ -92,3 +92,20 @@ Important caveat:
 3. Discuss `efficientnet_b0` as the most efficient near-top performer.
 4. Note that the ViT did not dominate the CNNs on this dataset, which is a meaningful empirical result rather than a weakness.
 5. Frame the remaining errors as fine-grained disease confusions within tomato classes, not broad failures of the classification pipeline.
+
+## Product Replacement Candidate Boundary (2026-07-17)
+
+1. The original Phase 2 comparison remains exactly four architectures x three
+   seeds (`41`, `42`, and `43`).
+2. The historical EfficientNet-B0 seed-41 result remains valid aggregate evidence,
+   but its exact checkpoint was not preserved in the prior export.
+3. A new EfficientNet-B0 seed-44 candidate was therefore trained for product
+   engineering. It is a separate release candidate, not a repaired or relabelled
+   seed-41 artifact and not part of the Phase 2 mean/standard-deviation tables.
+4. The seed-44 candidate recorded controlled test accuracy `0.997093`, macro F1
+   `0.997616`, and nine errors across 3,096 test images. No test error was in a
+   potato class, but this does not establish field validity because the test set
+   remains controlled PlantVillage imagery.
+5. Product integration evidence belongs to the Verdanta Mobile App repository;
+   this research repository remains the source for training, evaluation,
+   provenance, and governed export tooling.

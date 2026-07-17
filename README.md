@@ -183,3 +183,31 @@ py -3.13 -m src.phase2_error_analysis --models all
 Important note:
 1. `src.phase2_error_analysis` validates local checkpoint hashes against the run logs.
 2. If local `models/phase2/.../best.pth` files do not match the imported benchmark artifacts, the script will stop rather than generate misleading mistake galleries.
+
+## Product Release Candidate Export
+
+The original 4-model x 3-seed Phase 2 benchmark remains unchanged. Its recorded
+EfficientNet-B0 seed-41 checkpoint was not available for product integration, so
+a distinct EfficientNet-B0 seed-44 replacement candidate was trained on
+2026-07-17. It is not a fourth benchmark seed and must not be added to the
+historical aggregate tables.
+
+Canonical recovery notebook:
+
+```text
+Google Colab/mvp_efficientnet_release_candidate.ipynb
+```
+
+The notebook performs dataset integrity checking, validates the isolated
+candidate configuration, trains one release candidate, strictly reloads the
+state dictionary, and exports provenance plus evaluation evidence. The recovered
+candidate achieved controlled PlantVillage test accuracy `0.997093` and macro F1
+`0.997616`; these are controlled-domain values, not field-performance claims.
+
+`src/export_model_release.py` converts the reviewed candidate archive into the
+governed product bundle. It anchors the reviewed candidate ZIP hash, candidate
+identity, source commit, architecture, seed, class order, checkpoint size/hash,
+and strict state-dict load before generating synthetic numerical-parity fixtures.
+Raw Colab evidence, model weights, and the final release bundle are stored
+privately outside Git. The exported checkpoint SHA-256 is
+`667f0d6c9c4031d9290c671913f45dc822efb6050637a9802a064965a495785a`.

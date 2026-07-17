@@ -213,3 +213,49 @@ Issues/risks:
 1. Full 4-model x 3-seed Phase 2 benchmark is still pending completion.
 Next actions:
 1. Pull latest code in Colab (`git pull`) and rerun Phase 2 dry-run + benchmark commands.
+
+---
+
+Date: 2026-07-17
+Focus: Recover the missing product checkpoint path without rewriting Phase 2 evidence.
+Changes made:
+1. Trained one distinct EfficientNet-B0 seed-44 release candidate from source
+   commit `3dd00f7a92fed4537d53a24f0764ade26e3d5946`.
+2. Reviewed the 23-file candidate export, its executed notebook, metrics,
+   confusion matrix, histories, split evidence, checkpoint size, and hashes.
+3. Confirmed strict local state-dict reload and finite 15-class output.
+4. Added clean canonical notebook
+   `Google Colab/mvp_efficientnet_release_candidate.ipynb` with dataset integrity,
+   isolated dry run, training, validation, and export cells.
+5. Added `src/export_model_release.py` for governed research-to-product handoff.
+6. Moved raw executed notebook/ZIP and the assembled release outside Git into
+   private artifact storage; no checkpoint is committed.
+Evidence:
+1. Candidate ID: `efficientnet_b0_seed44_replacement_20260717T205245Z`.
+2. Candidate ZIP SHA-256:
+   `f03e51a55c0f43fef3eb74a149fb555a892ce936df8512b5f874348171a97d62`.
+3. Checkpoint SHA-256:
+   `667f0d6c9c4031d9290c671913f45dc822efb6050637a9802a064965a495785a`.
+4. Controlled test accuracy `0.997093`; macro F1 `0.997616`; nine test errors.
+Decision:
+1. Preserve the original 12-run benchmark unchanged. Seed 44 is a separate
+   product release candidate and must not enter Phase 2 aggregate reporting.
+2. Keep training/evaluation/export provenance here; keep serving and mobile
+   integration in the separate Verdanta Mobile App repository.
+Risks/limitations:
+1. PlantVillage is controlled-domain data; these metrics do not establish field
+   performance.
+2. Licensing, independent model-card review, physical-device integration, and
+   operational serving evidence remain product release gates.
+Validation:
+1. All six research `unittest` tests passed and `src/` compiled successfully.
+2. The nine-cell canonical notebook is valid JSON, has no saved execution output,
+   and its Python portions parse when Colab shell directives are treated as
+   notebook directives.
+3. A fresh temporary bundle reproduced from the archived candidate had the exact
+   expected checkpoint SHA-256 and passed the product's strict loader plus both
+   parity fixtures (approximately seven seconds on the current Windows laptop).
+4. A one-byte-modified copy of the candidate ZIP was rejected against the
+   independently anchored reviewed archive SHA-256 before bundle creation.
+5. The temporary reproducibility bundle was deleted after validation; the
+   immutable private release remained unchanged.

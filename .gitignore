@@ -24,6 +24,9 @@ CSV/*
 models/*.pth
 models/*.pt
 models/*.ckpt
+models/**/*.pth
+models/**/*.pt
+models/**/*.ckpt
 
 # ============================================================
 # Markdown / resolved files

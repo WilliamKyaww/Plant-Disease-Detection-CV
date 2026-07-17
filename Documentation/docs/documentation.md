@@ -617,3 +617,54 @@ Use this when prior artifacts exist (for example old `seed_41` one-epoch runs):
 2. Checkpoint-driven image-level error analysis requires one of:
    - exporting the matching `models/phase2/.../best.pth` files from Colab, or
    - rerunning `src.phase2_error_analysis` in the Colab/Drive environment where those weights already exist.
+
+## Seed-44 Product Release Candidate and Handoff (2026-07-17)
+
+### Why a new run was required
+
+1. The Phase 2 result artifacts preserved metrics for the original 12 runs, but
+   the exact EfficientNet-B0 seed-41 checkpoint selected for product engineering
+   could not be recovered.
+2. Historical evidence was not rewritten. Seed 41 remains part of the original
+   aggregate, with its model artifact recorded as unavailable.
+3. A distinct EfficientNet-B0 seed-44 candidate was trained solely as a product
+   replacement candidate. It is not part of the dissertation aggregate.
+
+### Candidate evidence
+
+1. Source commit: `3dd00f7a92fed4537d53a24f0764ade26e3d5946`.
+2. Frozen split sizes: `14,446 / 3,096 / 3,096`; LF/CRLF-normalised hashes match
+   the frozen manifest.
+3. Training: seed `44`, inverse-frequency class weighting, pretrained
+   EfficientNet-B0, AMP on a Colab T4, 30-epoch maximum, early stopping after 22.
+4. Best validation accuracy: `0.998062`.
+5. Controlled test accuracy: `0.997093`; macro F1: `0.997616`.
+6. Checkpoint size: `16,382,373` bytes; SHA-256:
+   `667f0d6c9c4031d9290c671913f45dc822efb6050637a9802a064965a495785a`.
+7. Strict `weights_only` state-dict loading and a finite `(1, 15)` forward output
+   were reproduced locally.
+
+### Artifact and notebook governance
+
+1. Raw executed notebook and candidate ZIP were moved out of the product
+   repository into private source-evidence storage outside Git.
+2. Added canonical clean notebook
+   `Google Colab/mvp_efficientnet_release_candidate.ipynb` to this repository.
+3. Added `src/export_model_release.py` to validate and construct the narrow
+   product release bundle, including deterministic synthetic parity fixtures.
+4. Expanded nested model-weight ignore rules. No model weight is tracked in Git.
+5. Product release `efficientnet-b0-pv15-seed44-v1` is privately stored and is
+   approved only for local engineering. Controlled PlantVillage performance is
+   not evidence of field accuracy, diagnosis safety, or treatment suitability.
+
+### Cross-repository reproduction
+
+1. All six research unit tests pass and the source tree compiles.
+2. The canonical nine-cell notebook is valid, output-free, and parseable with
+   Colab shell directives handled as notebook syntax.
+3. Re-exporting from the archived candidate produced the identical checkpoint
+   SHA-256 and passed the product loader plus both numerical-parity fixtures.
+4. The exporter independently anchors the reviewed candidate ZIP/checkpoint
+   hashes and rejects a modified archive before loading or creating an output.
+5. This establishes reproducible artifact assembly and runtime compatibility; it
+   does not establish field generalisation or release readiness.
