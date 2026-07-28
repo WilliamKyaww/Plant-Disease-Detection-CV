@@ -2,6 +2,7 @@
 
 Computer vision project for plant disease classification with reproducible training/evaluation workflows.
 
+dataset - kaggle.com/datasets/emmarex/plantdisease, downloaded ~24 Feb 2026, upstream spMohanty/PlantVillage-Dataset, licensed CC BY-SA 3.0 at source.
 ## Project Naming Note
 As of 2026-03-14, the project title is standardized as `Computer Vision Plant Disease Classification`.
 This reflects the current primary scope (15-class disease classification), with severity (0-3) kept as a later optional analysis track.
